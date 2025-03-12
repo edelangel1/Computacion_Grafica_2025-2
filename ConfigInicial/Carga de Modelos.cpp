@@ -1,6 +1,6 @@
 /*
 Carga de modelos
-Entrega: 07/03/2025
+Entrega: 11/03/2025
 Perez Del Angel Joaquin Eduardo
 Numero de cuenta: 422090638
 */
@@ -96,6 +96,7 @@ int main( ){
     
     // Load models
     Model dog((char*)"Models/RedDog.obj");
+    Model park((char*)"Models/Parque/Park.obj");
     glm::mat4 projection = glm::perspective( camera.GetZoom( ), ( float )SCREEN_WIDTH/( float )SCREEN_HEIGHT, 0.1f, 100.0f );
 
     // Game loop
@@ -120,14 +121,20 @@ int main( ){
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "view"), 1, GL_FALSE, glm::value_ptr(view));
 
         // Draw the loaded model
-        glm::mat4 model(1);
-        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+        // Dog
+        glm::mat4 modelDog = glm::mat4(1.0f);
+        modelDog = glm::translate(modelDog, glm::vec3(1.0f, -0.1f, 2.0f));
+        modelDog = glm::scale(modelDog, glm::vec3(0.5f, 0.5f, 0.5f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelDog));
         dog.Draw(shader);
 
-        model = glm::translate(model, glm::vec3(3.0f, 0.0f, 0.0f));
-        model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
-        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        dog.Draw(shader);
+        // Park
+        glm::mat4 modelPark = glm::mat4(1.0f);
+        modelPark = glm::translate(modelPark, glm::vec3(1.0f, 0.0f, 0.0f));
+        modelPark = glm::rotate(modelPark, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        modelPark = glm::scale(modelPark, glm::vec3(4.0f, 4.0f, 4.0f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelPark));
+        park.Draw(shader);
 
         // Swap the buffers
         glfwSwapBuffers( window );
