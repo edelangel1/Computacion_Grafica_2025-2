@@ -101,6 +101,7 @@ int main( ){
     Model bench((char*)"Models/Banca/Bench.obj");
     Model bicycle((char*)"Models/Bici/Bicycle.obj");
     Model cat((char*)"Models/Gato/Cat.obj");
+    Model house((char*)"Models/Casa/House.obj");
     glm::mat4 projection = glm::perspective( camera.GetZoom( ), ( float )SCREEN_WIDTH/( float )SCREEN_HEIGHT, 0.1f, 100.0f );
 
     // Game loop
@@ -125,51 +126,57 @@ int main( ){
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "view"), 1, GL_FALSE, glm::value_ptr(view));
 
         // Draw the loaded model
-        // Park
-        glm::mat4 modelPark = glm::mat4(1.0f);
-        modelPark = glm::translate(modelPark, glm::vec3(1.0f, 0.0f, 0.0f));
-        modelPark = glm::rotate(modelPark, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-        modelPark = glm::scale(modelPark, glm::vec3(10.0f, 10.0f, 10.0f));
-        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelPark));
-        park.Draw(shader);
+        //// Park
+        //glm::mat4 modelPark = glm::mat4(1.0f);
+        //modelPark = glm::translate(modelPark, glm::vec3(1.0f, 0.0f, 0.0f));
+        //modelPark = glm::rotate(modelPark, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        //modelPark = glm::scale(modelPark, glm::vec3(10.0f, 10.0f, 10.0f));
+        //glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelPark));
+        //park.Draw(shader);
 
-        //// Dog
-        glm::mat4 modelDog = glm::mat4(1.0f);
-        modelDog = glm::translate(modelDog, glm::vec3(3.0f, -0.4f, 3.0f));
-        modelDog = glm::scale(modelDog, glm::vec3(1.0f, 1.0f, 1.0f));
-        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelDog));
-        dog.Draw(shader);
+        ////// Dog
+        //glm::mat4 modelDog = glm::mat4(1.0f);
+        //modelDog = glm::translate(modelDog, glm::vec3(3.0f, -0.4f, 3.0f));
+        //modelDog = glm::scale(modelDog, glm::vec3(1.0f, 1.0f, 1.0f));
+        //glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelDog));
+        //dog.Draw(shader);
 
-        // Bench
-        glm::mat4 modelBench = glm::mat4(1.0f);
-        modelBench = glm::translate(modelBench, glm::vec3(0.5f, -0.5f, 0.4f));
-        modelBench = glm::rotate(modelBench, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-        modelBench = glm::scale(modelBench, glm::vec3(1.5f, 1.5f, 1.5f));
-        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelBench));
-        bench.Draw(shader);
+        //// Bench
+        //glm::mat4 modelBench = glm::mat4(1.0f);
+        //modelBench = glm::translate(modelBench, glm::vec3(0.5f, -0.5f, 0.4f));
+        //modelBench = glm::rotate(modelBench, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        //modelBench = glm::scale(modelBench, glm::vec3(1.5f, 1.5f, 1.5f));
+        //glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelBench));
+        //bench.Draw(shader);
 
-        //// Hydrant
-        glm::mat4 modelHydrant = glm::mat4(1.0f);
-        modelHydrant = glm::translate(modelHydrant, glm::vec3(2.0f, -0.57f, -0.2f));
-        modelHydrant = glm::rotate(modelHydrant, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-        modelHydrant = glm::scale(modelHydrant, glm::vec3(0.6f, 0.6f, 0.6f));
-        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelHydrant));
-        hydrant.Draw(shader);
+        ////// Hydrant
+        //glm::mat4 modelHydrant = glm::mat4(1.0f);
+        //modelHydrant = glm::translate(modelHydrant, glm::vec3(2.0f, -0.57f, -0.2f));
+        //modelHydrant = glm::rotate(modelHydrant, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        //modelHydrant = glm::scale(modelHydrant, glm::vec3(0.6f, 0.6f, 0.6f));
+        //glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelHydrant));
+        //hydrant.Draw(shader);
 
-        //// Bicycle
-        glm::mat4 modelBicycle = glm::mat4(1.0f);
-        modelBicycle = glm::translate(modelBicycle, glm::vec3(-1.0f, -0.55f, 3.3f));
-        modelBicycle = glm::rotate(modelBicycle, glm::radians(40.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-        modelBicycle = glm::scale(modelBicycle, glm::vec3(1.0f, 1.0f, 1.0f));
-        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelBicycle));
-        bicycle.Draw(shader);
+        ////// Bicycle
+        //glm::mat4 modelBicycle = glm::mat4(1.0f);
+        //modelBicycle = glm::translate(modelBicycle, glm::vec3(-1.0f, -0.55f, 3.3f));
+        //modelBicycle = glm::rotate(modelBicycle, glm::radians(40.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+        //modelBicycle = glm::scale(modelBicycle, glm::vec3(1.0f, 1.0f, 1.0f));
+        //glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelBicycle));
+        //bicycle.Draw(shader);
 
-        // Cat
-        glm::mat4 modelCat = glm::mat4(1.0f);
-        modelCat = glm::translate(modelCat, glm::vec3(0.6f, -0.3f, 0.5f));
-        modelCat = glm::scale(modelCat, glm::vec3(0.5f, 0.5f, 0.5f));
-        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelCat));
-        cat.Draw(shader);
+        //// Cat
+        //glm::mat4 modelCat = glm::mat4(1.0f);
+        //modelCat = glm::translate(modelCat, glm::vec3(0.6f, -0.3f, 0.5f));
+        //modelCat = glm::scale(modelCat, glm::vec3(0.5f, 0.5f, 0.5f));
+        //glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelCat));
+        //cat.Draw(shader);
+
+        glm::mat4 modelHouse = glm::mat4(1.0f);
+        modelHouse = glm::translate(modelHouse, glm::vec3(0.6f, -0.3f, 0.5f));
+        modelHouse = glm::scale(modelHouse, glm::vec3(0.5f, 0.5f, 0.5f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelHouse));
+        house.Draw(shader);
 
         // Swap the buffers
         glfwSwapBuffers( window );
